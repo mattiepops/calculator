@@ -1,10 +1,20 @@
-.calc {
-   display: flex; 
-   flex-direction: column;
-   padding: 20px;
-   border-radius: 10px;
-   width: 300px;
-   border: 1px solid black;
+/* body {
+    padding: 0;
+    margin: 0;
+    background: linear-gradient(to left, #00AAFF, #00FF6C);
+} */
+
+.calc-all {
+    display: grid;
+    /* display: flex; 
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;*/
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
 div {
@@ -14,46 +24,40 @@ div {
     justify-content: center;
 }
 
-.calc1 {
+.calc-cont {
     display: flex;
     flex-direction: row;
 }
 
-.calc2 {
-    display: flex;
-    flex-direction: row;
-}
-.calc3 {
-    display: flex;
-    flex-direction: row;
-}
-.calc4 {
-    display: flex;
-    flex-direction: row;
-}
-.calc5 {
-    display: flex;
-    flex-direction: row;
-}
-
-.opp {
+.btnOpp {
     margin: 10px;
     padding: 15px;
-    border: 1px solid brown;
-    border-radius: 40px;
+    border: 1px solid white;
+    border-radius: 10px;
     width: 100%;
+    background-color: white;
+    cursor: pointer;
+    font-size: 2rem;
+    
 }
-.inputnr {
+
+.btn {
     margin: 10px;
     padding: 15px;
-    border: 1px double blue;
-    border-radius: 40px;
+    border: 1px double white;
+    border-radius: 10px;
+    background-color: white;
+    width: 100%;
+    cursor: pointer;
+    font-size: 2rem;
 }
 
 .result {
     margin-left: 20px;
     margin-right: 20px;
+    padding: 50px;
     border: 1px solid green;
     display: flex;
     justify-content: flex-end;
+    background-color: white;
 }
