@@ -1,8 +1,8 @@
-/* body {
+body {
     padding: 0;
     margin: 0;
     background: linear-gradient(to left, #00AAFF, #00FF6C);
-} */
+}
 
 .calc-all {
     display: grid;
@@ -10,16 +10,16 @@
     flex-direction: column;
     padding: 20px;
     border-radius: 10px;
-    width: 400px;*/
-    border: 1px solid black;
+    width: 400px;
+    border: 1px solid black;*/
     justify-content: center;
     align-items: center;
-    grid-template-rows: minmax(120px, auto) repeat(5, 100px);
 }
 
 div {
     text-align: center;
     padding: 10px;
+
     display: flex;
     justify-content: center;
 }
@@ -29,35 +29,71 @@ div {
     flex-direction: row;
 }
 
-.btnOpp {
+/* .btnOpp {
     margin: 10px;
     padding: 15px;
     border: 1px solid white;
     border-radius: 10px;
     width: 100%;
-    background-color: white;
     cursor: pointer;
     font-size: 2rem;
-    
-}
+    border: 1px solid black;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
 
-.btn {
-    margin: 10px;
-    padding: 15px;
+} */
+
+.btn, .btnOpp, .equal, .allclear {
+    margin: 5px;
+    padding-left: 35px;
+    padding-right: 35px;
     border: 1px double white;
     border-radius: 10px;
-    background-color: white;
     width: 100%;
     cursor: pointer;
     font-size: 2rem;
+    border: 1px solid black;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.75);
 }
 
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.btnOpp:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.equal:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.allclear:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
 .result {
-    margin-left: 20px;
+    /* margin-left: 20px;
     margin-right: 20px;
     padding: 50px;
     border: 1px solid green;
     display: flex;
     justify-content: flex-end;
-    background-color: white;
+    background-color: white; */
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, 0.75);
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-direction: column ;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.result .previous-operand{
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+}
+.result .current-operand{
+    color: white;
+    font-size: 2.5rem;
 }
