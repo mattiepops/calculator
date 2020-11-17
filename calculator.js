@@ -14,13 +14,13 @@ calcResult.className = "result";
 
 const prevOperandText = document.createElement("div");
 prevOperandText.className = "previous-operand";
-prevOperandText.textContent = "123 +";
+prevOperandText.textContent = "";
 
 // ____________________
 
 const currOperandText = document.createElement('div');
 currOperandText.className = "current-operand";
-currOperandText.textContent = "432";
+currOperandText.textContent = "";
 
 // ____________________
 
@@ -121,7 +121,8 @@ class Calculator {
                 computation = prev / current;
                 break;
             // case "%":
-            //     computation = current 
+            //     computation = prev / 100;
+            //     break;
             default:
                 return
         }

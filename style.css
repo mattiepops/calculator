@@ -10,13 +10,13 @@ body {
     padding: 20px;
     border-radius: 10px;
     width: 400px;*/
-    border: 1px solid black;
+    border: 3px solid darkslategrey;
     justify-content: center;
     align-items: center;
     min-height: fit-content;
     max-width: fit-content;
     background-color:  rgba(125, 135, 168, 0.918);
-    box-shadow: 5px 10px 18px #888888;
+    box-shadow: 5px 10px 20px black;
 }
 
 div {
@@ -58,6 +58,8 @@ div {
     border: 1px solid black;
     outline: none;
     background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: 5px 5px 18px black;
+
 }
 
 .btn:hover {
@@ -85,6 +87,8 @@ div {
   padding: 10px;
   word-wrap: break-word;
   word-break: break-all;
+  height: 100px;
+  width: 450px;
 }
 
 .result .previous-operand{
