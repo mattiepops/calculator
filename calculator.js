@@ -75,6 +75,7 @@ class Calculator {
     constructor(prevOperandText, currOperandText) {
         this.prevOperandText = prevOperandText;
         this.currOperandText = currOperandText;
+        this.readyToReset = false;
         this.clear()
 
     }
@@ -124,8 +125,9 @@ class Calculator {
             //     computation = prev / 100;
             //     break;
             default:
-                return
+                return;
         }
+        this.readyToReset = true;
         this.currOperand = computation;
         this.operation = undefined;
         this.prevOperand = "";
@@ -174,9 +176,16 @@ const acButton = document.querySelector(".allclear");
 const calculator = new Calculator(prevOperandText, currOperandText);
 
 numberButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener("click", () => {
+
+        if(calculator.prevOperand === "" &&
+        calculator.currOperand !== "" &&
+    calculator.readyToReset) {
+            calculator.currOperand = "";
+            calculator.readyToReset = false;
+        }
         calculator.appendNumber(button.innerText)
-        calculator.updateDisplay()
+        calculator.updateDisplay();
     })
 })
 
