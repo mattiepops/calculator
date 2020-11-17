@@ -1,41 +1,3 @@
-class Calculator {
-    constructor(prevOperand, currOperand) {
-        this.prevOperand = prevOperand;
-        this.currOperand = currOperand;
-        this.clear()
-
-    }
-
-clear (){
-    this.currOperand = "";
-    this.prevOperand = "";
-    this.operation = "undefined";
-
-}
-
-delete() {
-
-}
-
-appendNumber(number){
-
-}
-
-chooseOperation(operation){
-
-}
-
-compute(){
-
-}
-
-updateDisplay(){
-
-}
-
-}
-
-
 const body = document.querySelector("body");
 body.className = "body";
 
@@ -50,15 +12,15 @@ const calcResult = document.createElement("div");
 calcResult.className = "result";
 // ____________________
 
-const prevOperand = document.createElement("div");
-prevOperand.className = "previous-operand";
-prevOperand.textContent = "123 +";
+const prevOperandText = document.createElement("div");
+prevOperandText.className = "previous-operand";
+prevOperandText.textContent = "123 +";
 
 // ____________________
 
-const currOperand = document.createElement('div');
-currOperand.className = "current-operand";
-currOperand.textContent = "432";
+const currOperandText = document.createElement('div');
+currOperandText.className = "current-operand";
+currOperandText.textContent = "432";
 
 // ____________________
 
@@ -70,35 +32,35 @@ let line;
 let button;
 
 calcAll.appendChild(calcResult);
-calcResult.appendChild(prevOperand);
-calcResult.appendChild(currOperand);
+calcResult.appendChild(prevOperandText);
+calcResult.appendChild(currOperandText);
 
-for (let i = 0; i < tab.length; i++){
+for (let i = 0; i < tab.length; i++) {
     button = document.createElement("div");
     button.textContent = tab[i];
     button.className = "btn";
 
-if(i <= 2){
-    button.className = "btnOpp";
-}
+    if (i <= 2) {
+        button.className = "btnOpp";
+    }
 
-if((i == 7) || (i == 11) || (i == 15) || (i == 19)){
-    button.className = "operators";
-}
-if (i == 18){
-    button.className = "equal";
-}
-if(i % 4 === 3){
-    button.className = "btnOpp";
-}
-if (i == 3){
-    button.className = "allclear";
-}
+    if ((i == 7) || (i == 11) || (i == 15) || (i == 19)) {
+        button.className = "operators";
+    }
+    if (i == 18) {
+        button.className = "equal";
+    }
+    if (i % 4 === 3) {
+        button.className = "btnOpp";
+    }
+    if (i == 3) {
+        button.className = "allclear";
+    }
 
-if(i%4===0){
-    line = document.createElement("div");
-    line.className = "calc-cont"
-}
+    if (i % 4 === 0) {
+        line = document.createElement("div");
+        line.className = "calc-cont"
+    }
     calcAll.appendChild(line);
     body.appendChild(calcAll);
     line.appendChild(button);
@@ -108,6 +70,98 @@ if(i%4===0){
 
 // START OF JS FUNCTIONALITY CODE
 
+
+class Calculator {
+    constructor(prevOperandText, currOperandText) {
+        this.prevOperandText = prevOperandText;
+        this.currOperandText = currOperandText;
+        this.clear()
+
+    }
+
+    clear() {
+        this.currOperand = "";
+        this.prevOperand = "";
+        this.operation = undefined;
+
+    }
+
+
+    appendNumber(number) {
+        if (number === "." && (this.currOperand.includes("."))) return;
+        this.currOperand = this.currOperand.toString() + number.toString();
+    }
+
+    chooseOperation(operation) {
+        if (this.currOperand === "") return;
+        if (this.prevOperand !== "") {
+            this.compute()
+        }
+        this.operation = operation;
+        this.prevOperand = this.currOperand;
+        this.currOperand = "";
+    }
+
+    compute() {
+        let computation;
+        let prev = parseFloat(this.prevOperand);
+        let current = parseFloat(this.currOperand);
+        if (isNaN(prev) || isNaN(current)) return;
+        switch (this.operation) {
+            case "+":
+                computation = prev + current;
+                break;
+            case "-":
+                computation = prev - current;
+                break;
+            case "x":
+                computation = prev * current;
+                break;
+            case "/":
+                computation = prev / current;
+                break;
+            // case "%":
+            //     computation = current 
+            default:
+                return
+        }
+        this.currOperand = computation;
+        this.operation = undefined;
+        this.prevOperand = "";
+    }
+
+    getDisplayNumber(number) {
+        const stringNumber = number.toString();
+        const integerDigits = parseFloat(stringNumber.split(".")[0]);
+        const decimalDigits = stringNumber.split(".")[1];
+        let integerDisplay;
+        if (isNaN(integerDigits)) {
+            integerDisplay = ""
+        } else {
+            integerDisplay = integerDigits.toLocaleString('en', {
+                maximumFractionDigits: 0
+            })
+        }
+        if (decimalDigits != null) {
+            return `${integerDisplay}.${decimalDigits}`;
+        }   else {
+            return integerDisplay;
+        }
+    }
+
+    updateDisplay() {
+        this.currOperandText.innerText = this.getDisplayNumber(this.currOperand);
+
+        if (this.operation != null) {
+            this.prevOperandText.innerText = `${this.getDisplayNumber(this.prevOperand)} ${this.operation}`;
+        }   else {
+            this.prevOperandText.innerText = ""
+        }
+
+    }
+
+}
+
 const numberButtons = document.querySelectorAll(".btn");
 
 const oppButtons = document.querySelectorAll(".btnOpp");
@@ -116,8 +170,29 @@ const equalButton = document.querySelector(".equal");
 
 const acButton = document.querySelector(".allclear");
 
-const calculator = new Calculator(prevOperand, currOperand);
+const calculator = new Calculator(prevOperandText, currOperandText);
 
 numberButtons.forEach(button => {
-    button.addEventListener
+    button.addEventListener('click', () => {
+        calculator.appendNumber(button.innerText)
+        calculator.updateDisplay()
+    })
+})
+
+oppButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.chooseOperation(button.innerText)
+        calculator.updateDisplay()
+    })
+})
+
+
+equalButton.addEventListener("click", button => {
+    calculator.compute();
+    calculator.updateDisplay();
+})
+
+acButton.addEventListener("click", button => {
+    calculator.clear();
+    calculator.updateDisplay();
 })
