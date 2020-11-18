@@ -46,7 +46,7 @@ div {
 
 } */
 
-.btn, .btnOpp, .equal, .allclear {
+.btn, .btnOpp, .equal, .allclear, .delete {
     margin: 5px;
     padding-left: 35px;
     padding-right: 35px;

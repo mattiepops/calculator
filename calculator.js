@@ -1,5 +1,9 @@
 const body = document.querySelector("body");
 body.className = "body";
+// ____________________
+
+const container = document.createElement("div");
+container.className = "container";
 
 // ____________________
 
@@ -25,7 +29,7 @@ currOperandText.textContent = "";
 // ____________________
 
 
-let tab = ["(", ")", "%", "AC", "7", "8", "9", "/", "4", "5", "6", "x", "1", "2", "3", "-", "0", ".", "=", "+"];
+let tab = ["(", ")", "DEL", "AC", "7", "8", "9", "/", "4", "5", "6", "x", "1", "2", "3", "-", "0", ".", "=", "+"];
 
 let line;
 
@@ -40,12 +44,16 @@ for (let i = 0; i < tab.length; i++) {
     button.textContent = tab[i];
     button.className = "btn";
 
-    if (i <= 2) {
+    if (i <= 1) {
         button.className = "btnOpp";
     }
 
     if ((i == 7) || (i == 11) || (i == 15) || (i == 19)) {
         button.className = "operators";
+    }
+    if (i == 2) {
+        button.className = "delete";
+
     }
     if (i == 18) {
         button.className = "equal";
@@ -62,7 +70,8 @@ for (let i = 0; i < tab.length; i++) {
         line.className = "calc-cont"
     }
     calcAll.appendChild(line);
-    body.appendChild(calcAll);
+    container.appendChild(calcAll);
+    body.appendChild(container);
     line.appendChild(button);
 }
 
@@ -86,6 +95,10 @@ class Calculator {
         this.operation = undefined;
 
     }
+
+    delete() {
+        this.currOperand = this.currOperand.toString().slice(0, -1)
+      }
 
 
     appendNumber(number) {
@@ -121,9 +134,6 @@ class Calculator {
             case "/":
                 computation = prev / current;
                 break;
-            // case "%":
-            //     computation = prev / 100;
-            //     break;
             default:
                 return;
         }
@@ -173,6 +183,8 @@ const equalButton = document.querySelector(".equal");
 
 const acButton = document.querySelector(".allclear");
 
+const delButton = document.querySelector(".delete");
+
 const calculator = new Calculator(prevOperandText, currOperandText);
 
 numberButtons.forEach(button => {
@@ -205,4 +217,19 @@ equalButton.addEventListener("click", button => {
 acButton.addEventListener("click", button => {
     calculator.clear();
     calculator.updateDisplay();
+})
+
+delButton.addEventListener('click', button => {
+    calculator.delete();
+    calculator.updateDisplay();
+})
+
+body.addEventListener("keypress", function(e) {
+
+    if(e.code === "Enter"){
+    currOperandText.innerHTML = updateDisplay();
+    prevOperandText.innerHTML += " = ";
+    prevOperandText.innerHTML += currOperandText.innerHTML = Function('return ' + currOperandText.innerHTML)();
+    
+    }
 })
