@@ -1,7 +1,7 @@
 # Calculator Project
 ________
 
-Wecome ***Kilian*** to my masterpiece! :bowtie:
+Wecome ***Kelian*** to my masterpiece! :bowtie:
 
 Please find the **calculator project link** [here] (https://mattiepops.github.io/calculator/).
 
