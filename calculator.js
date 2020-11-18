@@ -88,6 +88,7 @@ class Calculator {
         this.clear()
 
     }
+// functions for calculator operations:
 
     clear() {
         this.currOperand = "";
@@ -175,6 +176,8 @@ class Calculator {
 
 }
 
+// defining constants to use in the functions:
+
 const numberButtons = document.querySelectorAll(".btn");
 
 const oppButtons = document.querySelectorAll(".btnOpp");
@@ -186,6 +189,8 @@ const acButton = document.querySelector(".allclear");
 const delButton = document.querySelector(".delete");
 
 const calculator = new Calculator(prevOperandText, currOperandText);
+
+// adding the event listeners:
 
 numberButtons.forEach(button => {
     button.addEventListener("click", () => {
@@ -224,12 +229,12 @@ delButton.addEventListener('click', button => {
     calculator.updateDisplay();
 })
 
-body.addEventListener("keypress", function(e) {
+// body.addEventListener("keypress", function(e) {
 
-    if(e.code === "Enter"){
-    currOperandText.innerHTML = updateDisplay();
-    prevOperandText.innerHTML += " = ";
-    prevOperandText.innerHTML += currOperandText.innerHTML = Function('return ' + currOperandText.innerHTML)();
-    
-    }
-})
+//     if(e.code === "Enter"){
+//     currOperandText.innerHTML = updateDisplay();
+//     prevOperandText.innerHTML += " = ";
+//     prevOperandText.innerHTML += currOperandText.innerHTML = Function('return ' + currOperandText.innerHTML)();
+
+//     }
+// })
