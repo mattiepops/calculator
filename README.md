@@ -1,8 +1,9 @@
 # Calculator Project
 ________
 
+Wecome ***Kilian*** to my masterpiece! :bowtie:
 
-Please find the **project link** here :
+Please find the **calculator project link** [here] (https://mattiepops.github.io/calculator/).
 
 ### Reason for this project:
 ________
@@ -21,4 +22,13 @@ Also I got a taste of how the logic behind JS works, and what my train of though
 ## Problems encountered:
 
 I had so much trouble understanding what I need to do initially. I did not know where or how to begin, and I still don't fully understand how to structure and read JS code. A lot of functions and statements that I coded, I would not have in a million years known had to do at the beginning of this exercise, and I still don't think I can reproduce it fully by myself if I had to do it again.
+
+One technical problem that I have not managed to resolve, is to get the brackets to function. After a lot of confusion trying to fix this problem, I left them as they were... :sob: :expressionless:
+
+### Conclusion
+_____
+
+In the end, I powered through and managed to create a functional calculator!
+
+Thank you for reading this readme and giving me feedback on the project :punch: 
 
